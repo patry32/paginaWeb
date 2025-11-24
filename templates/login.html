@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="form-container">
+        <h1>Iniciar sesión</h1>
+
+        <form action="" method="POST">
+            <!--después agregamos con Django-->
+
+            <div class="form-group">
+                <label for="username">Usuario o email</label>
+                <input type="text" id="usurname" name="usurname" required placeholder="Tu usuario o email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required placeholder="Tu contraseña">
+            </div>
+
+            <button type="submit" class="btn-login">Ingresar</button>
+        </form>
+
+        <p>¿No tenés cuenta? <a href="registro.html">Registrate acá</a></p>
+    </section>
+    
+</body>
+</html>
