@@ -2,10 +2,99 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>proyecto_final_info_2025</title>
+  <title>Formulario de Adopción</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+      color: #5a3e36;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #d86f5e;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #d8b6a4;
+      border-radius: 6px;
+      background-color: #fff;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #d86f5e;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c45f4d;
+    }
+  </style>
 </head>
 <body>
-  <h1>Pagina web</h1>
-  <p>descripción</p>
+  <h1>Formulario de Adopción de Mascotas</h1>
+
+  <form action="/enviar" method="post">
+    <label for="nombre">Nombre completo:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono">
+
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" name="direccion">
+
+    <label for="ambiente">¿Dónde vivís actualmente?</label>
+<select id="ambiente" name="ambiente" required>
+  <option value="">Seleccioná una opción</option>
+  <option value="departamento">Departamento</option>
+  <option value="casa">Casa</option>
+  <option value="quinta">Quinta o casa con patio amplio</option>
+  <option value="otro">Otro</option>
+</select>
+
+   <label for="preferencias">¿Tenés alguna preferencia de mascota?</label>
+<select id="preferencias" name="preferencias">
+  <option value="">Seleccioná una opción</option>
+  <option value="perro">Perro</option>
+  <option value="gato">Gato</option>
+  <option value="otro">Otro</option>
+</select>
+
+<label for="alergias">¿Tenés alguna alergia que debamos considerar?</label>
+<textarea id="alergias" name="alergias" rows="3" placeholder="Ejemplo: alergia al pelo de gato"></textarea>
+
+    <label for="responsable">¿Quién será responsable del cuidado diario?</label>
+    <input type="text" id="responsable" name="responsable">
+
+    <label for="expectativas">¿Qué esperás de la adopción?</label>
+    <textarea id="expectativas" name="expectativas" rows="4"></textarea>
+
+    <label>
+      <input type="checkbox" name="compromiso" required>
+      Me comprometo a cuidar responsablemente de la mascota.
+    </label>
+
+    <button type="submit">Enviar solicitud</button>
+  </form>
 </body>
 </html>
+
