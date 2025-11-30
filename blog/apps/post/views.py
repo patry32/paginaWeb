@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import TemplateView
 
-class PostListView(ListView):
+class PostListView(TemplateView):
     template_name = 'post/post-list.html'

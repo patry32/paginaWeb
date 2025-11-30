@@ -22,14 +22,14 @@ from blog.views import IndexView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name="home"),
-    #path('posts/', PostListView.as_view(), name="post-list"),
     path('', include('apps.usuario.urls')),
+    path('', include('apps.post.urls')),
 ]
 
 if settings.DEBUG:
     from django.conf.urls.static import static
-
     urlpatterns += static(settings.STATIC_URL,
                            document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL,
                            document_root=settings.MEDIA_ROOT)
+    
