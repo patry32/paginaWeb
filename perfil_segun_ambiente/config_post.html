@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adopción responsable según tu hogar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configuración de colores de marca (ajustá a tu identidad)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#FFF7F2',
+              100: '#FFE9DF',
+              200: '#FFD1B8',
+              300: '#FFB48A',
+              400: '#FF955E',
+              500: '#F8743A',  // Primario cálido
+              600: '#DF5F2E',
+              700: '#B64823',
+              800: '#8E3519',
+              900: '#6E2A14'
+            },
+            ink: {
+              900: '#1C1C1E',
+              700: '#3A3A3C',
+              500: '#6D6D72'
+            }
+          },
+          fontFamily: {
+            display: ['"Poppins"', 'system-ui', 'sans-serif'],
+            body: ['"Inter"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-50 text-ink-900 font-body">
+  <!-- Contenedor -->
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <!-- Hero -->
+    <section class="rounded-2xl bg-white shadow-sm border border-brand-100 p-8 mb-8">
+      <h1 class="font-display text-3xl md:text-4xl font-semibold text-ink-900">
+        Adopción responsable: elegí según tu hogar
+      </h1>
+      <p class="mt-3 text-ink-700 max-w-3xl">
+        Encontrar el compañero ideal es conectar espacio, rutina y energía. Priorizá perfiles sobre razas, y
+        recordá que los mestizos son grandes aliados cuando reciben tiempo, límites y afecto.
+      </p>
+
+      <!-- Pestañas -->
+      <div class="mt-6 flex gap-2" role="tablist" aria-label="Entorno de adopción">
+       <div class="flex flex-col items-center gap-2 w-40">
+      <!-- Imagen -->
+       <img src="https://i.pinimg.com/1200x/46/0e/60/460e60e9a50c0f2ad162ee8293991b02.jpg" alt="Ideal para tu departamento"
+          class="w-24 h-24  object-cover shadow-md" />
+
+      <!-- Botón debajo -->
+       <button id="tab-depto" role="tab" aria-controls="panel-depto" aria-selected="true"
+         class="tab-btn w-full px-3 py-2 rounded-xl bg-brand-500 text-white text-sm font-semibold shadow hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-300">
+          Departamento
+       </button>
+      </div>
+      <!-- Repetir para Casa -->
+      <div class="flex flex-col items-center gap-2 w-40">
+          <img src="https://i.pinimg.com/736x/83/60/82/83608257aff2e864b5119e2b290a3e88.jpg" alt="Perro para casa"
+          class="w-24 h-24  object-cover shadow-md" />
+
+      <button id="tab-casa" role="tab" aria-controls="panel-casa" aria-selected="false"
+        class="tab-btn w-full px-3 py-2 rounded-xl bg-white text-ink-900 border border-brand-200 text-sm font-semibold hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-300">
+        Casa con patio
+       </button>
+      </div>
+
+      </div>
+    </section>
+
+    <!-- Paneles -->
+    <section>
+      <!-- Panel Departamento -->
+      <div id="panel-depto" role="tabpanel" aria-labelledby="tab-depto" class="block">
+        <!-- Bloque educativo -->
+        <div class="rounded-2xl bg-white shadow-sm border border-brand-100 p-6 mb-6">
+          <h2 class="font-display text-2xl font-semibold">Perfiles ideales para departamento</h2>
+          <ul class="mt-4 space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+              <div>
+                <span class="font-semibold">Adulto tranquilo:</span>
+                edad 3–8 años, paseos cortos constantes y juegos de olfato.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+              <div>
+                <span class="font-semibold">Mediano-pequeño sociable:</span>
+                tolera ruidos y camina bien con correa sin tirar.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+              <div>
+                <span class="font-semibold">Sensibilidad emocional:</span>
+                buscá perros que gestionen bien cambios y ascensores.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tarjetas -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <article class="rounded-2xl bg-white border border-brand-100 shadow-sm overflow-hidden">
+            <div class="p-5">
+              <h3 class="font-display text-xl font-semibold">Mestizo adulto</h3>
+              <p class="mt-2 text-ink-700">
+                Tamaño mediano, carácter estable, ideal para rutinas claras y enriquecimiento en interiores.
+              </p>
+              <ul class="mt-4 space-y-2">
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Energía:</span> moderada</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Paseos:</span> 2–3 cortos/día + olfateo</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="rounded-2xl bg-white border border-brand-100 shadow-sm overflow-hidden">
+            <div class="p-5">
+              <h3 class="font-display text-xl font-semibold">Sociable mediano-pequeño</h3>
+              <p class="mt-2 text-ink-700">
+                Se adapta a ascensores y ruidos ocasionales; disfruta juegos mentales.
+              </p>
+              <ul class="mt-4 space-y-2">
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Energía:</span> baja a moderada</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Entrenamiento:</span> caminar sin tirar y descanso de calidad</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="rounded-2xl bg-white border border-brand-100 shadow-sm overflow-hidden">
+            <div class="p-5">
+              <h3 class="font-display text-xl font-semibold">Senior compañero</h3>
+              <p class="mt-2 text-ink-700">
+                Temperamento sereno, ideal para quienes buscan calma y afecto cotidiano.
+              </p>
+              <ul class="mt-4 space-y-2">
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Cuidados:</span> chequeos regulares y paseos suaves</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Rutina:</span> horarios predecibles y descanso confortable</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Panel Casa -->
+      <div id="panel-casa" role="tabpanel" aria-labelledby="tab-casa" class="hidden">
+        <div class="rounded-2xl bg-white shadow-sm border border-brand-100 p-6 mb-6">
+          <h2 class="font-display text-2xl font-semibold">Perfiles ideales para casa con patio</h2>
+          <ul class="mt-4 space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+              <div>
+                <span class="font-semibold">Activo equilibrado:</span>
+                energía para jugar y entrenar, combinado con paseo largo.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+              <div>
+                <span class="font-semibold">Compañero de familia:</span>
+                carácter estable y paciente, disfrute de espacios y zonas de descanso.
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+              <div>
+                <span class="font-semibold">Estimulación:</span>
+                juegos de búsqueda, obediencia, y circuitos en patio.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <article class="rounded-2xl bg-white border border-brand-100 shadow-sm overflow-hidden">
+            <div class="p-5">
+              <h3 class="font-display text-xl font-semibold">Joven curioso</h3>
+              <p class="mt-2 text-ink-700">
+                Energía alta con buena respuesta a entrenamiento y juegos en patio.
+              </p>
+              <ul class="mt-4 space-y-2">
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Actividad:</span> 1 paseo largo + sesiones de juego</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Entrenamiento:</span> obediencia básica y autocontrol</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="rounded-2xl bg-white border border-brand-100 shadow-sm overflow-hidden">
+            <div class="p-5">
+              <h3 class="font-display text-xl font-semibold">Compañero grande</h3>
+              <p class="mt-2 text-ink-700">
+                Tamaño mediano-grande, necesita espacio y límites claros para convivir.
+              </p>
+              <ul class="mt-4 space-y-2">
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Rutina:</span> juego estructurado + descanso protegido</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Socialización:</span> visitas guiadas y presentación gradual</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="rounded-2xl bg-white border border-brand-100 shadow-sm overflow-hidden">
+            <div class="p-5">
+              <h3 class="font-display text-xl font-semibold">Adulto equilibrado</h3>
+              <p class="mt-2 text-ink-700">
+                Temperamento estable, ideal para familias que buscan compañía y actividad moderada.
+              </p>
+              <ul class="mt-4 space-y-2">
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Actividad:</span> juego diario y paseo constante</span>
+                </li>
+                <li class="flex gap-2">
+                  <span class="inline-block w-2 h-2 rounded-full bg-brand-400 mt-2"></span>
+                  <span><span class="font-semibold">Manejo:</span> normas claras y refuerzo positivo</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloque de cierre -->
+    <section class="mt-10 rounded-2xl bg-white shadow-sm border border-brand-100 p-6">
+      <h2 class="font-display text-2xl font-semibold">Checklist de adopción responsable</h2>
+      <div class="grid md:grid-cols-2 gap-6 mt-4">
+        <ul class="space-y-2">
+          <li class="flex gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+            <span><span class="font-semibold">Tiempo:</span> paseos, juego, entrenamiento, descanso</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+            <span><span class="font-semibold">Presupuesto:</span> veterinaria, alimento, accesorios</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+            <span><span class="font-semibold">Entorno:</span> ruidos, espacio, seguridad</span>
+          </li>
+        </ul>
+        <ul class="space-y-2">
+          <li class="flex gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+            <span><span class="font-semibold">Rutina:</span> horarios predecibles y límites claros</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+            <span><span class="font-semibold">Compatibilidad:</span> energía, edad, sociabilidad</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-500 mt-2"></span>
+            <span><span class="font-semibold">Vínculo:</span> paciencia, refuerzo positivo y constancia</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Script de pestañas -->
+  <script>
+    const tabDepto = document.getElementById('tab-depto');
+    const tabCasa = document.getElementById('tab-casa');
+    const panelDepto = document.getElementById('panel-depto');
+    const panelCasa = document.getElementById('panel-casa');
+
+    function activateTab(target) {
+      const isDepto = target === 'depto';
+
+      // Mostrar/ocultar paneles
+      panelDepto.classList.toggle('hidden', !isDepto);
+      panelDepto.classList.toggle('block', isDepto);
+      panelCasa.classList.toggle('hidden', isDepto);
+      panelCasa.classList.toggle('block', !isDepto);
+
+      // Aria y estilos de botón
+      tabDepto.setAttribute('aria-selected', isDepto ? 'true' : 'false');
+      tabCasa.setAttribute('aria-selected', !isDepto ? 'true' : 'false');
+
+      tabDepto.className = (isDepto)
+        ? 'tab-btn px-4 py-2 rounded-xl bg-brand-500 text-white shadow hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-300'
+        : 'tab-btn px-4 py-2 rounded-xl bg-white text-ink-900 border border-brand-200 hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-300';
+
+      tabCasa.className = (!isDepto)
+        ? 'tab-btn px-4 py-2 rounded-xl bg-brand-500 text-white shadow hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-300'
+        : 'tab-btn px-4 py-2 rounded-xl bg-white text-ink-900 border border-brand-200 hover:bg-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-300';
+    }
+
+    tabDepto.addEventListener('click', () => activateTab('depto'));
+    tabCasa.addEventListener('click', () => activateTab('casa'));
+  </script>
+</body>
+</html>

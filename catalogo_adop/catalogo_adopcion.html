@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adopta con Am💖r</title>
+  <!-- Tailwind vía CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Ocultar scrollbar en carousels */
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Clamp multi-línea */
+    .line-clamp-2 {
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-neutral-950 text-neutral-100">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-neutral-950/80 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <a href="#" class="font-semibold text-lg">Adopta con Am💖r</a>
+      <form class="hidden md:block" onsubmit="event.preventDefault();">
+        <input id="searchInput" placeholder="Buscar por nombre, tamaño, ciudad..."
+               class="w-80 rounded-md bg-neutral-800 px-3 py-2 text-sm focus:ring-2 focus:ring-rose-500" />
+      </form>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="mx-auto max-w-7xl px-4">
+    <!-- Hero destacado -->
+    <section id="hero" class="relative my-6 rounded-xl overflow-hidden hidden">
+      <img id="heroImage" alt="Chiqui" class="w-full h-[38vh] object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/10"></div>
+      <div class="absolute bottom-4 left-4 right-4 max-w-xl">
+        <h2 id="heroName" class="text-2xl font-semibold"></h2>
+        <p id="heroDesc" class="text-sm text-neutral-300 line-clamp-2"></p>
+        <div class="mt-3 flex gap-2">
+          <button class="rounded-md bg-rose-500 px-3 py-2 text-sm font-medium hover:bg-rose-600">Conocer</button>
+          <button class="rounded-md bg-neutral-800 px-3 py-2 text-sm hover:bg-neutral-700">Pedir info</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenedor de filas -->
+    <div id="rows"></div>
+  </main>
+
+  <!-- Nav inferior móvil -->
+  <nav class="fixed bottom-0 inset-x-0 bg-neutral-900 border-t border-neutral-800 md:hidden">
+    <div class="flex justify-around py-2 text-xs">
+      <a href="#" class="flex flex-col items-center gap-1">Inicio</a>
+      <a href="#" class="flex flex-col items-center gap-1">Nuevo y popular</a>
+      <a href="#" class="flex flex-col items-center gap-1">Guardados</a>
+    </div>
+  </nav>
+
+  <!-- Template tarjeta -->
+  <template id="petCardTemplate">
+    <article class="snap-start min-w-[56vw] sm:min-w-[32vw] md:min-w-[22vw] lg:min-w-[18vw]">
+      <div class="block">
+        <div class="relative rounded-lg overflow-hidden">
+          <img class="card-image w-full h-48 md:h-56 object-cover" alt="" />
+          <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent"></div>
+          <div class="absolute bottom-2 left-2 right-2">
+            <h4 class="card-name text-base font-semibold"></h4>
+            <div class="mt-1 flex flex-wrap gap-1 text-[11px]">
+              <span class="badge-size rounded bg-neutral-800 px-2 py-0.5 hidden"></span>
+              <span class="badge-temp rounded bg-neutral-800 px-2 py-0.5 hidden"></span>
+              <span class="badge-city rounded bg-neutral-800 px-2 py-0.5 hidden"></span>
+              <!-- tags dinámicas se insertan acá -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 flex gap-2">
+        <button class="btn-conocer rounded-md bg-rose-500 px-3 py-1.5 text-xs hover:bg-rose-600">Conocer</button>
+        <button class="btn-guardar rounded-md bg-neutral-800 px-3 py-1.5 text-xs hover:bg-neutral-700">Guardar</button>
+      </div>
+    </article>
+  </template>
+
+  <!-- Datos de ejemplo (puedes reemplazar con tus imágenes reales) -->
+  <script>
+    const DATA = {
+      featured: {
+        name: "Luna",
+        description: "Dulce y paciente. Sueña con una familia que la abrace al llegar a casa.",
+        image: "https://la100.cienradios.com/resizer/v2/SPQY2WSNLVAPBMUHI2CXVAOLGE.jpeg?width=1200&height=900&auth=0ced6b79709849d19a45b46a011dab5f8c27142baf82b4a2cace3d1bc7e5350d&smart=true&quality=85"
+      },
+      categories: [
+        {
+          title: "Compañeros de vida",
+          subtitle: "Leales y cariñosos",
+          pets: [
+            { id: "1", name: "Luna", size: "Mediana", temperament: "Cariñosa", city: "Senz Peña",
+              tags: ["Vacunada", "Convive con niños"], 
+              image: "https://la100.cienradios.com/resizer/v2/SPQY2WSNLVAPBMUHI2CXVAOLGE.jpeg?width=1200&height=900&auth=0ced6b79709849d19a45b46a011dab5f8c27142baf82b4a2cace3d1bc7e5350d&smart=true&quality=85" },
+            { id: "2", name: "Bruno", size: "Grande", temperament: "Tranquilo", city: "Presidencia Roque Senz Peña",
+             tags: ["Castrado", "Hogar tranquilo"], 
+              image: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRqL_x9NTI_hCCKwk2V-ENSiYRT8wyhhOkg7U4BVW2rTBswaIts" },
+            { id: "3", name: "Cleo", size: "Pequeña", temperament: "Dulce", city: "Resistencia",
+              tags: ["Vacunada", "Cariñosa"], 
+              image: "https://www.purina.com.ar/sites/default/files/2022-10/mascotas-en-adopcion-beneficios-y-requisitos-para-adoptar-un-perro-o-gato.png" },
+            { id: "4", name: "Milo", size: "Pequeño", temperament: "Curioso y jugueton", city: "Fontana",
+              tags: ["Vacunada", "Cariñosa"], 
+              image: "https://i.pinimg.com/1200x/07/d8/9c/07d89c3f82cbfc2c19fe3e425107f2eb.jpg" },
+            { id: "5", name: "Pedro", size: "Pequeño", temperament: "Tranquilo", city: "Puerto vilelas",
+              tags: ["Curioso"], 
+              image: "https://i.pinimg.com/736x/fa/4a/06/fa4a06e388d29bb8b9d296a2ca3bc5ea.jpg" },
+            { id: "6", name: "Juanca", size: "Grande", temperament: "Tranquilo", city: "Puerto vilelas",
+              tags: ["Vacunadas al día", "Obediente"], 
+              image: "https://i.pinimg.com/736x/22/9f/44/229f443ce20e71bd006faed07f990903.jpg" },
+            { id: "7", name: "Linda", size: "Mediana", temperament: "Dulce", city: "Resistencia",
+              tags: ["Vacunada", "Sociable"], 
+              image: "https://i.pinimg.com/736x/9b/a6/60/9ba660bad112e30e0fb863188fbb219e.jpg" },
+            { id: "8", name: "Nina", size: "Pequeña", temperament: "Activa", city: "Resistencia",
+              tags: ["Juguetona", "Vacunada"], 
+              image: "https://thumbs.dreamstime.com/b/cute-border-collie-retrato-de-pocas-semanas-cachorro-la-frontera-sentado-en-el-jard%C3%ADn-frente-al-matorral-cinquefoil-con-flores-382650675.jpg" },
+            { id: "9", name: "Copito", size: "Pequeño", temperament: "Tranquilo", city: "Charata",
+              tags: ["Vacunada", "Convive con niños", "No requiere paseo"], 
+              image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwA_mQ7zm32tXul8pVFDgcDsDBQYOQh_vNwA&s" }
+          ]
+        },
+        {
+          title: "Héroes rescatados",
+          subtitle: "Valientes y curiosos",
+          pets: [
+            { id: "10", name: "Max", size: "Mediano", temperament: "Curioso", city: "Chaco",
+              tags: ["Sobreviviente", "Sociable"], 
+              image: "https://images.pexels.com/photos/1147820/pexels-photo-1147820.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" },
+            { id: "11", name: "Lupe", size: "Mediana", temperament: "Tímida", city: "Resistencia",
+              tags: ["Vacunadas al Día", "Cariñosa"], 
+              image: "https://i.pinimg.com/736x/6e/4f/c5/6e4fc5e51f2b0c654dd99bcda28fac66.jpg" },
+            { id: "12", name: "Dani", size: "Mediana", temperament: "Dulce", city: "Quitilipi",
+              tags: ["Vacunada", "Cariñosa"], 
+              image: "https://i.pinimg.com/1200x/c9/72/41/c97241f81ef2779cf7972f85f32b3a0e.jpg" },
+            { id: "13", name: "Daisy", size: "Grande", temperament: "Cariñosa", city: "Resistencia",
+              tags: ["Vacunada", "Cuidadosa"], 
+              image: "https://i.pinimg.com/736x/4d/ff/e1/4dffe1ddf93055a935a354d0f926d0f2.jpg" },
+            { id: "14", name: "Lucho", size: "Grande", temperament: "Jugueton", city: "Resistencia",
+              tags: ["Vacunada", "Protector"], 
+              image: "https://i.pinimg.com/736x/39/4b/07/394b07dd4231169d31a6380d2acfbc11.jpg" },
+            { id: "15", name: "Mira", size: "Pequeña", temperament: "Activa", city: "Resistencia",
+              tags: ["Vacunada-Castrada", "Juguetona"], 
+              image: "https://i.pinimg.com/1200x/e7/a2/8c/e7a28c5656bdeb4c532aa949806fcc1b.jpg" },
+            { id: "16", name: "Simón", size: "Pequeño", temperament: "Calmo", city: "Sáenz Peña",
+              tags: ["Castrado", "Protector"], 
+              image: "https://images.pexels.com/photos/16432514/pexels-photo-16432514/free-photo-of-perro-mascota-acostado-dormido.jpeg" }
+          ]
+        },
+        {
+          title: "Perfectos para niños",
+          subtitle: "Dulces y pacientes",
+          pets: [
+            { id: "17", name: "Peces", size: "Pequeños", temperament: "De agua dulce", city: "Chaco",
+              tags: ["Son ideales para departamentos", "Facil de cuidar"], 
+              image: "https://i.pinimg.com/1200x/1e/09/e7/1e09e70ed084d6d439ae2c2646f12d6f.jpg" },
+            { id: "18", name: "Leo", size: "Pequeño", temperament: "Juguetón", city: "Resistencia",
+              tags: ["Vacunado", "Juguetón"], 
+              image: "https://i.pinimg.com/736x/6d/67/bc/6d67bc31e38a3e97a5cb1524da88fdcd.jpg" },
+            { id: "19", name: "Astor", size: "Pequeño", temperament: "Dulce", city: "Resistencia",
+              tags: ["Vacunado", "Cariñoso"], 
+              image: "https://i.pinimg.com/736x/90/08/3a/90083a6f335a7b1a7ffc61eab6ca1980.jpg" },
+            { id: "20", name: "Max", size: "Pequeña", temperament: "Dulce", city: "Resistencia",
+              tags: ["Vacunada", "Cariñosa"], 
+              image: "https://i.pinimg.com/1200x/fb/db/ea/fbdbeaeb437bb86ec277bb9ddbc50ce5.jpg" },
+            { id: "21", name: "Goyo", size: "Pequeña", temperament: "Dulce", city: "Resistencia",
+              tags: ["Vacunado", "Cariñoso"], 
+              image: "https://i.pinimg.com/1200x/02/c8/09/02c80938ed029c4d454e9d2bcf60f70f.jpg" },
+            { id: "22", name: "Rapidin", size: "Pequeño", temperament: "Sigiloso", city: "Resistencia",
+              tags: ["Paciente"], 
+              image: "https://i.pinimg.com/1200x/4d/da/ac/4ddaac7ac870fb2f21d0f7e32eefc2f2.jpg" },
+            { id: "23", name: "Homero", size: "Pequeño", temperament: "Dulce", city: "Resistencia",
+              tags: ["Vacunada", "Cariñoso"], 
+              image: "https://i.pinimg.com/1200x/5e/5b/94/5e5b944b576feb382125ff6e7b219371.jpg" },
+            { id: "24", name: "Vale", size: "Mediana", temperament: "Cariñosa", city: "Sáenz Peña",
+              tags: ["Mimos", "Vacunada"], 
+              image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?q=80&w=1200&auto=format&fit=crop" }
+          ]
+        }
+      ]
+    };
+
+    // Estado de favoritos
+    const favs = new Set(JSON.parse(localStorage.getItem("favs") || "[]"));
+    const saveFavs = () => localStorage.setItem("favs", JSON.stringify([...favs]));
+
+    // Render hero
+    function renderHero() {
+      const hero = document.getElementById("hero");
+      const img = document.getElementById("heroImage");
+      const name = document.getElementById("heroName");
+      const desc = document.getElementById("heroDesc");
+      if (DATA.featured) {
+        hero.classList.remove("hidden");
+        img.src = DATA.featured.image;
+        img.alt = DATA.featured.name;
+        name.textContent = DATA.featured.name;
+        desc.textContent = DATA.featured.description;
+      }
+    }
+
+    // Crear tarjeta desde template
+    function createPetCard(pet) {
+      const tpl = document.getElementById("petCardTemplate");
+      const node = tpl.content.cloneNode(true);
+
+      node.querySelector(".card-image").src = pet.image;
+      node.querySelector(".card-image").alt = pet.name;
+      node.querySelector(".card-name").textContent = pet.name;
+
+      const badgeSize = node.querySelector(".badge-size");
+      const badgeTemp = node.querySelector(".badge-temp");
+      const badgeCity = node.querySelector(".badge-city");
+
+      if (pet.size) { badgeSize.textContent = pet.size; badgeSize.classList.remove("hidden"); }
+      if (pet.temperament) { badgeTemp.textContent = pet.temperament; badgeTemp.classList.remove("hidden"); }
+      if (pet.city) { badgeCity.textContent = pet.city; badgeCity.classList.remove("hidden"); }
+
+      // Tags dinámicos
+      const tagsWrap = badgeCity.parentElement;
+      (pet.tags || []).slice(0, 3).forEach(t => {
+        const span = document.createElement("span");
+        span.className = "rounded bg-rose-500/20 text-rose-300 px-2 py-0.5";
+        span.textContent = t;
+        tagsWrap.appendChild(span);
+      });
+
+      // Botón guardar con estado
+      const btnGuardar = node.querySelector(".btn-guardar");
+      const isFav = favs.has(pet.id);
+      if (isFav) btnGuardar.classList.add("bg-rose-500");
+      btnGuardar.addEventListener("click", () => {
+        if (favs.has(pet.id)) { favs.delete(pet.id); btnGuardar.classList.remove("bg-rose-500"); }
+        else { favs.add(pet.id); btnGuardar.classList.add("bg-rose-500"); }
+        saveFavs();
+      });
+
+      // Botón conocer (demo)
+      node.querySelector(".btn-conocer").addEventListener("click", () => {
+        alert(`Conocer a ${pet.name}: ${pet.size || ""} · ${pet.temperament || ""} · ${pet.city || ""}`);
+      });
+
+      return node;
+    }
+
+    // Render filas por categoría
+    function renderRows(filteredText = "") {
+      const container = document.getElementById("rows");
+      container.innerHTML = "";
+      const q = filteredText.toLowerCase();
+
+      DATA.categories.forEach(cat => {
+        // Filtrado simple por nombre, ciudad, tamaño, temperamento, tags
+        const pets = (cat.pets || []).filter(p => {
+          const blob = [
+            p.name, p.city, p.size, p.temperament, ...(p.tags || [])
+          ].join(" ").toLowerCase();
+          return q ? blob.includes(q) : true;
+        });
+
+        // Sección categoría
+        const section = document.createElement("section");
+        section.className = "mb-8";
+        section.innerHTML = `
+          <div class="flex items-end justify-between mb-3">
+            <div>
+              <h3 class="text-xl font-semibold">${cat.title}</h3>
+              <p class="text-sm text-neutral-300">${cat.subtitle || ""}</p>
+            </div>
+            <button class="text-sm text-neutral-300 hover:text-neutral-100">Ver todo</button>
+          </div>
+          <div class="group relative">
+            <div class="row-track flex gap-3 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2"></div>
+            <button class="btn-left hidden md:block absolute -left-2 top-1/2 -translate-y-1/2 rounded-full bg-neutral-800/80 p-2 hover:bg-neutral-700">‹</button>
+            <button class="btn-right hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 rounded-full bg-neutral-800/80 p-2 hover:bg-neutral-700">›</button>
+          </div>
+        `;
+
+        const track = section.querySelector(".row-track");
+        if (pets.length === 0) {
+          const empty = document.createElement("p");
+          empty.className = "text-neutral-400 text-sm";
+          empty.textContent = "Aún no hay mascotas que coincidan.";
+          track.appendChild(empty);
+        } else {
+          pets.forEach(pet => track.appendChild(createPetCard(pet)));
+        }
+
+        // Flechas de scroll en desktop
+        const btnL = section.querySelector(".btn-left");
+        const btnR = section.querySelector(".btn-right");
+        btnL.addEventListener("click", () => track.scrollBy({ left: -track.clientWidth, behavior: "smooth" }));
+        btnR.addEventListener("click", () => track.scrollBy({ left: track.clientWidth, behavior: "smooth" }));
+
+        container.appendChild(section);
+      });
+    }
+
+    // Inicialización
+    document.addEventListener("DOMContentLoaded", () => {
+      renderHero();
+      renderRows();
+
+      const input = document.getElementById("searchInput");
+      input.addEventListener("input", (e) => renderRows(e.target.value));
+    });
+  </script>
+</body>
+</html>

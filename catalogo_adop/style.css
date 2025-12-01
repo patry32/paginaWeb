@@ -1,0 +1,13 @@
+.scroll-suave {
+  scrollbar-width: thin;
+  scrollbar-color: #ffbf24 transparent;
+}
+<style>
+            .scroll-suave::-webkit-scrollbar {
+              width: 6px;
+            }
+            .scroll-suave::-webkit-scrollbar-thumb {
+              background-color: #fbbf24; /* ámbar */
+              border-radius: 3px;
+            }
+          </style>

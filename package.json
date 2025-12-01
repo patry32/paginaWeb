@@ -1,0 +1,27 @@
+{
+  "name": "adoptar_con_amor_",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/patry32/paginaWeb#readme",
+  "bugs": {
+    "url": "https://github.com/patry32/paginaWeb/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patry32/paginaWeb.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/style.css --watch",
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --minify"
+  },
+    "dependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17"
+  }
+}
+
