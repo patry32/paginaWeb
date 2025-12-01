@@ -3,108 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <title>Adopta con Amor</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!--TAILWIND CDN-->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <!--HEADER/NAV-->
-    <header class="header">
-        <nav class="nav">
+    <!--HEADER-->
+    <header class="bg-white shadow">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
             
             <!--LOGO-->
-            <a href="index.html" class="logo">
-                <img src="img/logo-blog.png" alt="Logo Adopta con Amor">
+            <a href="index.html" class="flex items-center grap-2">
+                <img src="img/logo-blog.png" alt="Logo Adopta con Amor" class="h-12">
             </a>
-
-            <ul class="nav links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="adopciones.html">En adopcioón</a></li>
-                <li><a href="consejos.html"></a>Consejos</li>
-                <li><a href="contacto.html"></a>Contacto</li>
+            
+            <!--LINKS-->
+            <ul class="hidden md:flex items-center gap-6 text-lg font-medium">
+                <li><a href="index.html" class="hover:text-rose-600">Inicio</a></li>
+                <li><a href="adopciones.html" class="hover:text-rose-600">En adopción</a></li>
+                <li><a href="consejos.html" class="hover:text-rose-600">Consejos</a></li>
+            <li><a href="contacto.html" class="hover:text-rose-600">Contacto</a></li>
             </ul>
 
-            <div class="auth-buttons">
-                <a href="login.html" class="btn-login">Ingresar</a>
-                <a href="registro.html" class="btn-register">Registrarse</a>
+
+            <!--BOTONES AUTH-->
+            <div class="flex gap-3">
+                <a href="login.html" class="px-4 py-2 border border-rose-500 text-rose-600 rounded-lg hover:bg-rose-50">Ingresar</a>
+                <a href="registro.html" class="px-4 py-2 border border-rose-500 text-rose-600 rounded-lg hover:bg-rose-50">Registrarse</a>
             </div>
         </nav>
     </header>
 
-    <!--PRESENTACIÓN-->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Encontrá a tu nuevo mejor amigo💌</h2>
-            <p>Adoptá, no compres. Miles de mascotas esperan por una familia.</p>
+    <!--HERO-->
+    <section class="bg-rose-100 py-20">
+        <div class="max-w-5xl mx-auto text-center px-4">
+            <h2 class="text-4xl font-bold mb-4">Encontrá a tu nuevo mejor amigo💌</h2>
+            <p class="text-xl mb-8">Adoptá, no compres. Miles de mascotas esperan por una familia.</p>
 
-            <div class="hero-buttons">
-                <a href="adopciones.html" class="btn">Ver mascotas</a>
-                <a href="consejos.html" class="btn-secundario">Consejos de cuidado</a>
+            <div class="flex justify-center gap-4">
+                <a href="categorias.html" class="px-6 py-3 bg-rose-600 text-white rounded-lg text-lg hover:bg-rose-700">Ver mascotas</a>
+                <a href="consejos.html" class="px-6 py-3 bg-rose-600 text-white rounded-lg text-lg hover:bg-rose-700">Consejos de cuidado</a>
             </div>
         </div>
     </section>
 
-    <!--SECCIÓN DESTACADOS-->
-    <section class="destacados">
-        <h2>Últimas publicaciones</h2>
+    <!--DESTACADOS-->
+    <section class="max-w-6xl mx-auto py-16 px-4">
+        <h2 class="text-3xl font-bold text-center mb-10">Últimas publicaciones</h2>
 
-        <div class="tarjetas">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            <div class="tarjeta">
-                <img src="images/perrito1.jpg" alt="Perrito en adopción">
-                <h3>Toby</h3>
-                <p>Cachorro de 3 meses. Muy juguetón y cariñoso.</p>
-                <a href="detalle-mascota.html" class="btn">Ver más</a>
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+                <img src="images/perrito1.jpg" class="h-56 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold">Toby</h3>
+                    <p>Cachorro de 3 meses. Muy juguetón y cariñoso.</p>
+                    <a href="detalle-mascota.html" class="text-rose-600 font-medium hover:underline">Ver más</a></p>
+                </div>
             </div>
 
-            <div class="tarjeta">
-                <img src="images/gatito2.jpg" alt="Gatito en adopción">
-                <h3>Luna</h3>
-                <p>Gatita de 1 año, tranquila y muy dulce.</p>
-                <a href="detalle-mascota.html" class="btn">Ver más</a>
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+                <img src="images/gatito2.jpg" class="h-56 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold">Luna</h3>
+                    <p>Gatita de 1 año, tranquila y muy dulce.</p>
+                    <a href="detalle-mascota.html" class="text-rose-600 font-medium hover:underline">Ver más</a>
+                </div>
             </div>
 
-            <div class="tarjeta">
-                <img src="images/perrito3.jpg" alt="Perrito en adopción">
-                <h3>Simón</h3>
-                <p>Adulto, educado y súper compañero</p>
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+                <img src="images/perrito3.jpg" class="h-56 w-full object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold">Simón</h3>
+                    <p>Adulto, educado y súper compañero</p>
+                    <a href="detalle-mascota.html" class="text-rose-600 font-medium hover:underline">Ver más></a>
+                </div>
             </div>
+
         </div>
     </section>
 
     <!--LLAMADO A LA ACCIÓN-->
-    <section class="cta"> <!--call to action-->
-        <h2>¿Tenés una mascota para dar en adopción?</h2>
-        <p>Registrate, subí sus datos y ayudalo a encontrar un hogar.</p>
-
-        <a href="login.html" class="btn">Publicar mascota</a>
+    <section class="bg-rose-600 text-white py-20 text-center"> <!--call to action-->
+        <h2 class="text-3xl font-bold">¿Tenés una mascota para dar en adopción?</h2>
+        <p class="mb-8 text-lg">Registrate, subí sus datos y ayudalo a encontrar un hogar.</p>
+        <a href="login.html" class="px-6 py-3 bg-white text-rose-600 rounded-lg font-semibold hover:bg-rose-100">Publicar mascota</a>
     </section>
 
     <!--FOOTER-->
-    <footer class="footer">
-        <div class="footer-col">
-            <h3>Adopta con amor</h3>
-            <p>Un espacio para conectar mascotas con familias responsables.</p>
+    <footer class="bg-gray-800 text-gray-100 py-10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 grap-8 px-4">
+            <div>
+                <h3 class="text-xl font-bold mb-2">Adopta con amor</h3>
+                <p>Un espacio para conectar mascotas con familias responsables.</p>
+            </div>
         </div>
 
-        <div class="footer-col">
-            <h4>Secciones</h4>
-            <ul>
-                <li><a href="index.html">Inicio/a></li>
-                <li><a href="adopciones.html">En adopción</a></li>
-                <li><a href="consejos.html">Consejos</a></li>
-                <li><a href="contacto.html.">Contacto</a></li>
+        <div>
+            <h4 class="font-semibold mb-2">Secciones</h4>
+            <ul class="space-y-1">
+                <li><a href="index.html" class="hoover:underline">Inicio</a></li>
+                <li><a href="adopciones.html" class="hoover:underline">En adopción</a></li>
+                <li><a href="consejos.html" class="hoover:underline">Consejos</a></li>
             </ul>
         </div>
         
-        <div class="footer-col">
-            <h4>Contáctanos📧</h4>
+        <div>
+            <br><h4 class="font-semibold mb-2">Contacto📧</h4>
             <p>Email: adopcionesfelices@gmail.com</p>
         </div>
 
-        <div class="footer-copy">
-            <p>© 2025 - Todos los derechos reservados</p>
-        </div>
+            <p class="text-center mt-10 text-gray-400">© 2025 - Todos los derechos reservados</p>
     </footer>
 
 </body>
