@@ -7,15 +7,34 @@
 </head>
 <body>
 
+    <!--HERDER/NAV-->
+    <header class="header">
+        <nav class="nav">
+
+            <!--LOGO-->
+            <div class="logo-container">
+                <img src="img/logo-blog.png" alt="Logo Adopta con Amor" class="logo-img">
+                <h1 class="logo">Adopta con Amor</h1>
+            </div>
+
+            <ul class="nav links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="adopciones.html">En adopcioón</a></li>
+                <li><a href="consejos.html"></a>Consejos</li>
+                <li><a href="contacto.html"></a>Contacto</li>
+                <li><a href="acerca.html">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--LOGIN FORM-->
     <section class="form-container">
         <h1>Iniciar sesión</h1>
 
         <form action="" method="POST">
-            <!--después agregamos con Django-->
-
             <div class="form-group">
                 <label for="username">Usuario o email</label>
-                <input type="text" id="usurname" name="usurname" required placeholder="Tu usuario o email">
+                <input type="text" id="username" name="username" required placeholder="Tu usuario o email">
             </div>
 
             <div class="form-group">
@@ -30,8 +49,30 @@
     </section>
     
     <!--FOOTER-->
-    <footer>
-        <p>© 2025 Adopta Amor. Proyecto Informatorio.</p>
+    <footer class="footer">
+        <div class="footer-col">
+            <h3>Adopta con amor</h3>
+            <p>Un espacio para conectar mascotas con familias responsables.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Secciones</h4>
+            <ul>
+                <li><a href="index.html">Inicio/a></li>
+                <li><a href="adopciones.html">En adopción</a></li>
+                <li><a href="consejos.html">Consejos</a></li>
+                <li><a href="contacto.html.">Contacto</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-col">
+            <h4>Contáctanos📧</h4>
+            <p>Email: adopcionesfelices@gmail.com</p>
+        </div>
+
+        <div class="footer-copy">
+            <p>© 2025 - Todos los derechos reservados</p>
+        </div>
     </footer>
     
 </body>
