@@ -3,84 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <title>Registro</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!--TAILWIND CDN-->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <!--HEADER/NAV-->
-    <header class="header">
-        <nav class="nav">
+    <!--HEADER-->
+    <header class="bg-white shadow">
+        <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
             
             <!--LOGO-->
             <div class="logo-container">
-                <img src="img/logo-blog.png" alt="Logo Adopta con Amor" class="logo-img">
-                <h1 class="logo">Adopta con Amor</h1>
+                <img src="img/logo-blog.png" alt="Logo Adopta con Amor" class="h-12">
             </div>
 
-            <ul class="nav links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="adopciones.html">En adopcioón</a></li>
-                <li><a href="consejos.html"></a>Consejos</li>
-                <li><a href="contacto.html"></a>Contacto</li>
-                <li><a href="acerca.html">Acerca de</a></li>
+           <!--LINKS-->
+            <ul class="hidden md:flex items-center gap-6 text-lg font-medium">
+                <li><a href="index.html" class="hover:text-rose-600">Inicio</a></li>
+                <li><a href="adopciones.html" class="hover:text-rose-600">En adopción</a></li>
+                <li><a href="consejos.html" class="hover:text-rose-600">Consejos</a></li>
+                <li><a href="contacto.html" class="hover:text-rose-600">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <!--REGISTRO FORM-->
-    <section class="form-container">
-        <h1>Crear cuenta</h1>
+    <section class="py-20">
+        <div class="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-8">
+            
+            <h1 class="text-3xl font-bold text-center mb-6">Crear cuenta</h1>
 
-        <form action="" method="POST">
+            <form action="" method="POST" class="space-y-5">
 
-            <div class="form-group">
-                <label for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" required placeholder="tuemail@example.com">
-            </div>
+                <div>
+                    <label for="email" class="block font-medium mb-1">Correo electrónico</label>
+                    <input 
+                        type="email" 
+                        id="email" name="email" 
+                        name="email"
+                        required placeholder="tuemail@example.com"
+                        class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                </div>
 
-            <div class="form-group">
-                <label for="username">Nombre de usuario</label>
-                <input type="text" id="username" name="username" required placeholder="ej: damaris123">
-            </div>
+                <div>
+                    <label for="username"class="block font-medium mb-1">Nombre de usuario</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        required placeholder="ej: damaris123"
+                        class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                </div>
 
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" required placeholder="Tu contraseña">
-            </div>
+                <div>
+                    <label for="password" class="block font-medium mb-1">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        required placeholder="Tu contraseña"
+                        class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-rose-500">
+                </div>
 
-            <button type="submit" class="btn-registrar">Registrarme</button>
-        </form>
+                <button 
+                    type="submit" 
+                    class="w-full bg-rose-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-rose-700">Registrarme
+                </button>
+            
+            </form>
 
-        <p>¿Ya tenés cuenta? <a href="login.html">Ingresar</a></p>
-    </section>
+            <p class="text-center mt-6">
+                ¿Ya tenés cuenta?
+                <a href="login.html" class="text-rose-600 font-medium hoover:underline">
+                Ingresar</a></p>
+        </div>
+   </section>
+
 
     <!--FOOTER-->
-    <footer class="footer">
-        <div class="footer-col">
-            <h3>Adopta con amor</h3>
-            <p>Un espacio para conectar mascotas con familias responsables.</p>
+    <footer class="bg-gray-800 text-gray-100 py-10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+            <div>
+                <h3 class="text-xl font-bold mb-2">Adopta con amor</h3>
+                <p>Un espacio para conectar mascotas con familias responsables.</p>
+            </div>
         </div>
 
-        <div class="footer-col">
-            <h4>Secciones</h4>
-            <ul>
-                <li><a href="index.html">Inicio/a></li>
-                <li><a href="adopciones.html">En adopción</a></li>
-                <li><a href="consejos.html">Consejos</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+        <div>
+            <h4 class="font-semibold mb-2">Secciones</h4>
+            <ul class="space-y-1">
+                <li><a href="index.html" class="hoover:underline">Inicio</a></li>
+                <li><a href="adopciones.html" class="hoover:underline">En adopción</a></li>
+                <li><a href="consejos.html" class="hoover:underline">Consejos</a></li>
             </ul>
         </div>
         
-        <div class="footer-col">
-            <h4>Contáctanos📧</h4>
+        <div>
+            <br><h4 class="font-semibold mb-2">Contacto📧</h4>
             <p>Email: adopcionesfelices@gmail.com</p>
         </div>
 
-        <div class="footer-copy">
-            <p>© 2025 - Todos los derechos reservados</p>
-        </div>
+            <p class="text-center mt-10 text-gray-400">© 2025 - Todos los derechos reservados</p>
     </footer>
-   
+  
 </body>
 </html>
