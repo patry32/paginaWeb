@@ -1,0 +1,223 @@
+{% extends 'layouts/general-layouts.html' %}
+{% block title %}Consejos y cuidados{% endblock title %}
+
+{% block content %}
+
+<div class="max-w-4xl mx-auto mt-10 p-6">
+
+    <h1 class="text-4xl font-bold text-green-600 text-center mb-6">
+        Consejos y cuidados para tu mascota
+    </h1>
+
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed text-center">
+        Adoptar es un acto de amor enorme. 💜 Cuidar también lo es. 
+        Acá tenés información esencial para una adopción responsable, requisitos,
+        especies permitidas y recomendaciones según tu estilo de vida.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- CARD 1 -->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">💜 Adopción responsable</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Adoptar cambia vidas. Darle un hogar a un animal significa compromiso con 
+                su bienestar emocional y físico durante toda su vida.
+            </p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">📋 Requisitos para adoptar</h2>
+            <ul class="text-gray-700 list-disc ml-5 space-y-1">
+                <li>Ser mayor de 18 años.</li>
+                <li>Poder dedicar tiempo y cuidados.</li>
+                <li>Compromiso de castración y vacunación.</li>
+                <li>Completar la solicitud de adopción.</li>
+                <li>Garantizar origen legal del animal.</li>
+            </ul>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">⚖️ Legalidad y normativa</h2>
+            <p class="text-gray-700">
+                Verificá que el animal provenga de un origen legal. Algunas especies 
+                exóticas requieren permisos especiales según normativa argentina.
+            </p>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🦜 Especies permitidas</h2>
+            <p class="text-gray-700">
+                Se permiten ciertos mamíferos, aves, peces y reptiles.  
+                Prohibidos: <b>monos, tortugas de tierra, aves silvestres</b>.
+            </p>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🐶🐱 Animales convencionales</h2>
+            <p class="text-gray-700">
+                Perros y gatos son los más comunes en refugios y protectoras del país.
+            </p>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">👶 Mascotas ideales para niños</h2>
+            <p class="text-gray-700">
+                Cobayos, conejos, hurones y hámsters pueden ser buenas opciones con 
+                supervisión adulta.
+            </p>
+        </div>
+
+        <!--EXÓTICAS FÁCILES 7-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🌿Especies exóticas de fácil crianza</h2>
+            <p class="text-gray-700">
+                Los hurones domésticos suelen ser dóciles, curiosos y no representan
+                riesgos de enfermedades zoonóticas. Son inquietos, pero muy sociables.
+            </p>
+        </div>
+        
+        <!--EXÓTICAS DIFÍCILES 8-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🐍Especies de difícil manejo</h2>
+            <p class="text-gray-700">
+                Las serpientes requieren cuidados complejos. Algunas constrictoras
+                como pitones y boas pueden superar los 6 metros, representando riesgos físicos.
+            </p>
+        </div>
+
+        <!--GATOS ADOPTABLES 9-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🐱Tipos de gatos adoptables</h2>
+            <p class="text-gray-700">
+                En refugios suelen encontrarse gatos mestizos, pero también pueden aparecer
+                razas como Siamés, Bengal, Británico, Persa, entre otras.
+                No hay razas prohibidas, solo gatos silvestres por ley.
+            </p>
+        </div>
+
+        <!--GATOS PROHIBIDOS 10-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🚫Gatos silvestres prohibidos</h2>
+            <p class="text-gray-700">
+                •Gato andino (Leopardus jacobita).<br>
+                •Puma (Puma concolor).<br>
+                La tenencia de fauna silvestre está prohibida sin autorización.
+            </p>
+        </div>
+
+        <!--PERROS ADOPTABLES 11-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🐕Razas de perros comunes en adopción</h2>
+            <p class="text-gray-700">
+                Podés encontrar mestizos y de raza pura:
+                Labrador, Golden, Bulldog Francés, Pastor Alemán, Caniche, Galgos,
+                Dachshund, entre otros. Depende del refugio y la zona.
+            </p>
+        </div>
+
+        <!--PPP 12-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">⚠️Razas potencialmente peligrosas</h2>
+            <p class="text-gray-700">
+                Algunas razas requieren permisos especiales:
+                Pitbull, Rottweiler, Dogo Argentino, Akita Inu, Doberman,
+                Bullmastiff, Presa Canario, Cane Corso, entre otros.
+            </p>
+        </div>
+
+        <!--MALTRATO 13-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🚨¿Qué es el maltrato animal?</h2>
+            <p class="text-gray-700">
+                Incluye golpes, abandono, negligencia, explotación, mutilación,
+                experimentación sin control y falta de alimento o atención veterinaria.
+                Ley 14.346 sanciona con prisión estos actos.
+            </p>
+        </div>
+
+        <!--AMBIENTE IDEAL 14-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🏡Elegir mascota según tu ambiente</h2>
+            <p class="text-gray-700">
+                •Casas con patio: ideales para perros grandes y activos.<br>
+                •Departamentos: mejores para razas pequeñas, adultas o tranquilas.<br>
+                •Si el espacio es chico: más paseos = menos estrés.
+            </p>
+        </div>
+
+        <!--ESTILO DE VIDA 15-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">Estilo de vida y tiempo disponible</h2>
+            <p class="text-gray-700">
+                Vida ocupada → mejor perros adultos o mayores.
+                Vida activa → perros enérgicos que disfruten salir.
+                Poco tiempo → considerar paseadores o "padrinos".
+            </p>
+        </div>
+
+        <!--PREPARACIÓN 16-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">Preparar el hogar</h2>
+            <p class="text-gray-700">
+                Antes de adoptar, prepará un espacio seguro con cama, juguetes,
+                comedero y agua fresca siempre disponible. La adaptación requiere paciencia.
+            </p>
+        </div>
+
+        <!--COMPATIBILIDAD ANIMAL 17-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">Presentación con otras mascotas</h2>
+            <p class="text-gray-700">
+                Si ya tenés animales, presentalos de forma supervisada y gradual.
+                La compatibilidad es clave para evitar estrés y conflictos en el hogar.
+            </p>
+        </div>
+
+        <!--VACUNAS 18-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">💉Vacunación obligatoria</h2>
+            <p class="text-gray-700">
+                Mantener el calendario de vacunas al día es fundamental para prevenir
+                enfermedades graves. Consultá a un veterinario ni bien adoptes.
+            </p>
+        </div>
+
+        <!--ALIMENTACIÓN 19-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🍖Alimentación adecuada</h2>
+            <p class="text-gray-700">
+                Elegí alimentos específicos según la edad: cachorro, adulto, senior.
+                Evitá dar comida casera o restos que puedan ser tóxicos.
+            </p>
+        </div>
+
+        <!--CASTRACIÓN 20-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">Castración responsable</h2>
+            <p class="text-gray-700">
+                Castrar evita camadas no deseadas y también reduce riesgos de enfermedades.
+                Es un acto de protección y salud.
+            </p>
+        </div>
+
+        <!--TIEMPO DE CALIDAD 21-->
+        <div class="bg-white shadow-md rounded-xl p-5 border border-gray-200">
+            <h2 class="text-xl font-semibold mb-2">🐾Tiempo, juego y amor</h2>
+            <p  class="text-gray-700">
+                Las mascotas necesitan atención, afecto y actividad física.
+                Sacalas a pasear, jugá con ellas y dedicales tiempo de calidad.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock content %}

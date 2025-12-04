@@ -1,9 +1,37 @@
-        <nav class="w-full flex justify-between items-center">
-            <h1 class="font-semibold text-base md:text-md lg:text-2xl"> Titulo </h1>
+<nav class="w-full bg-pink-700 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between h-20">
 
-            <ul class="flex gap-3 md:gap-5">
-            <li><a href="{%url 'home' %}">Inicio</a></li>
-            <li><a href="{%url 'post:post-list' %}">post</a></li>
-            <li><a href="{%url 'usuario:user-profile' %}">Perfil</a></li>
+            <!-- LOGO / Título -->
+            <a href="{% url 'home' %}" class="text-3xl font-bold tracking-wide hover:text-pink-200 transition">
+                Adoptar con AM♥R
+            </a>
+
+            <!-- Menú -->
+            <ul class="hidden md:flex items-center gap-8 text-lg font-medium">
+
+                <li><a href="{% url 'post:post-list' %}" class="hover:text-gray-200 transition">Información</a></li>
+
+                <li><a href="{% url 'post:adopciones' %}" class="hover:text-gray-200 transition">En adopción</a></li>
+
+                <li><a href="{% url 'post:consejos' %}" class="hover:text-gray-200 transition">Consejos</a></li>
+
+                <li><a href="{% url 'post:contacto' %}" class="hover:text-gray-200 transition">Contacto</a></li>
+
+                <!-- Botones derecha -->
+                <li>
+                    <a href="{% url 'usuario:registro' %}" class="bg-white text-red-700 px-4 py-1 rounded-full hover:bg-gray-200 transition">
+                        Registrarse
+                    </a>
+                </li>
+                <!-- Botones Izquierda -->
+                <li>
+                    <a href="{% url 'usuario:login' %}" class="bg-red-600 px-4 py-1 rounded-full hover:bg-red-950 transition">
+                        Ingresar
+                    </a>
+                </li>
             </ul>
-        </nav>
+
+        </div>
+    </div>
+</nav>

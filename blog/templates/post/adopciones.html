@@ -1,0 +1,152 @@
+{% extends 'layouts/general-layouts.html' %}
+
+{% load static %}
+
+{% block title %}Consejos y cuidados{% endblock title %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorías - Adopta con Amor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-100 text-gray-800">
+
+    <!-- SECCIÓN PRINCIPAL -->
+    <section class="max-w-6xl mx-auto text-center py-14 px-6">
+
+        <p class="inline-block border border-gray-300 px-4 py-1 rounded-full mt-10 text-2xl font-semibold text-pink-400">
+            Elegí la categoría que querés explorar según tus intereses
+        </p>
+
+        <!-- GRID DE CATEGORÍAS -->
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+            <!-- PERROS -->
+            <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition transform">
+
+                <!-- Imagen que cubre toda la tarjeta -->
+                <img src="{% static 'img/perro.jpg' %}" 
+                    alt="Perros" 
+                    class="w-full h-64 object-cover">
+
+
+                <!-- Contenido encima de la imagen -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
+                    <h2 class="text-3xl font-bold">Perros</h2>
+                    <p class="mt-2 text-gray-200">Mirá todos los perritos disponibles para adopción.</p>
+
+                    <a href="{% url 'usuario:user-profile' %}" class="inline-block mt-4 bg-blue-600 text-white px-5 py-2 rounded-full hover:bg-blue-700 transition w-fit">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- GATOS -->
+            <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition transform">
+
+                <!-- Imagen que cubre toda la tarjeta -->
+                <img src="{% static 'img/gatos.jpg' %}" 
+                    alt="Gatos" 
+                    class="w-full h-64 object-cover">
+
+
+                <!-- Contenido encima de la imagen -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
+                    <h2 class="text-3xl font-bold">Gatos</h2>
+                    <p class="mt-2 text-gray-200">Mirá todos los perritos disponibles para adopción.</p>
+
+                    <a href="{% url 'usuario:gatos' %}" class="inline-block mt-4 bg-green-600 text-white px-5 py-2 rounded-full transition w-fit">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+
+            <!-- URGENTE -->
+            <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition transform">
+
+                <!-- Imagen que cubre toda la tarjeta -->
+                <img src="{% static 'img/Urgente.png' %}" 
+                    alt="Urgente" 
+                    class="w-full h-64 object-cover">
+
+                <!-- Contenido encima de la imagen -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
+                    <h2 class="text-3xl font-bold">Urgente</h2>
+                    <p class="mt-2 text-gray-200">Mirá todos los perritos disponibles para adopción.</p>
+
+                    <a href="{% url 'usuario:urgente' %}" class="inline-block mt-4 bg-yellow-400 text-white px-5 py-2 rounded-full transition w-fit">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+
+            <!-- CACHORROS -->
+            <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition transform">
+
+                <!-- Imagen que cubre toda la tarjeta -->
+                <img src="{% static 'img/Cachorros.jpg' %}" 
+                    alt="Cachorros" 
+                    class="w-full h-64 object-cover">
+
+                <!-- Contenido encima de la imagen -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
+                    <h2 class="text-3xl font-bold">Cachorros</h2>
+                    <p class="mt-2 text-gray-200">Mirá todos los perritos disponibles para adopción.</p>
+
+                    <a href="{% url 'usuario:cachorros' %}" class="inline-block mt-4 bg-pink-600 text-white px-5 py-2 rounded-full transition w-fit">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+
+            <!-- ADULTOS -->
+            <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition transform">
+
+                <!-- Imagen que cubre toda la tarjeta -->
+                <img src="{% static 'img/adultos.jpg' %}" 
+                    alt="Mascotas Adultas" 
+                    class="w-full h-64 object-cover">
+
+
+                <!-- Contenido encima de la imagen -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
+                    <h2 class="text-3xl font-bold">Mascotas Adultas</h2>
+                    <p class="mt-2 text-gray-200">Mirá todos los perritos disponibles para adopción.</p>
+
+                    <a href="{% url 'usuario:adultos' %}" class="inline-block mt-4 bg-purple-600 text-white px-5 py-2 rounded-full transition w-fit">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+            <!-- Aves -->
+            <div class="relative bg-white rounded-2xl shadow-lg overflow-hidden hover:-translate-y-2 transition transform">
+
+                <!-- Imagen que cubre toda la tarjeta -->
+                <img src="{% static 'img/aves.jpg' %}" 
+                    alt="Mascotas Adultas" 
+                    class="w-full h-64 object-cover">
+
+
+                <!-- Contenido encima de la imagen -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-6">
+                    <h2 class="text-3xl font-bold">Aves</h2>
+                    <p class="mt-2 text-gray-200">Mirá todos los perritos disponibles para adopción.</p>
+
+                    <a href="{% url 'usuario:aves' %}" class="inline-block mt-4 bg-orange-600 text-white px-5 py-2 rounded-full transition w-fit">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
+
+{% endblock content %}

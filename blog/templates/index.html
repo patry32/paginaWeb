@@ -1,48 +1,42 @@
 
 {% extends 'layouts/general-layouts.html' %}
-
+    {% load static %}
     {% block title %} Inicio {% endblock title %}
 
 {% block content %} 
 
+<!-- HERO / PRESENTACIÓN -->
+<section class="hero text-center py-20 bg-gray-100">
+    <div class="hero-content max-w-3xl mx-auto flex flex-col items-center gap-6">
 
+        <!-- TÍTULO -->
+        <h2 class="text-4xl font-bold text-pink-700">
+            Encontrá a tu nuevo mejor amigo 💌
+        </h2>
 
-<div class="flex flex-col justify-center items-center gap-8 mt-6 lg:mt-0 mb-6 lg:mb-0 min-h-[calc(100dvh_-_56px_-_56px)]">
-    <div class="text-center">
-        <h2 class="font-semibold text-base md:text-md lg:text-3xl hover:text-pink-600">Adoptar con AM♥R </h2>
-        <p class="text-sm text-green-500">Me gustan los gatos</p>
+        <!-- SUBTÍTULO -->
+        <p class="text-lg font-bold text-teal-700 max-w-xl">
+            Adoptá, no compres. Miles de mascotas esperan por una familia.
+        </p>
+
+        <!-- BUSCADOR -->
+        <div class="w-full flex justify-center mt-4">
+            <div class="w-[300px] md:w-[400px] p-2 border border-gray-300 rounded-md flex shadow-sm bg-white">
+                <input 
+                    type="text" 
+                    class="w-full h-full focus:outline-none"
+                    placeholder="Buscar mascota..."
+                >
+            </div>
+        </div>
+
+        <!-- BOTONES -->
+        <div class="hero-buttons mt-4 flex justify-center gap-4">
+            <a href="{% url 'usuario:user-profile' %}" class="btn font-bold hover:text-gray-200 transition">Ver mascotas</a>
+            <a href="{% url 'post:consejos' %}" class="btn-secundario font-bold hover:text-gray-200 transition">Consejos de cuidado</a>
+        </div>
     </div>
-
-    <div class="w-[300] p-[8px] py[8px] border rounded-md flex">
-        <input type="text"class="w-full h-full focus:outline-none"  placeholder="Buscar Mascota">
-    </div>
-    <section class="max-w-6xl flex flex-col lg:flex-row gap-6">
-        <article class="flex flex-col gap-2">
-            <img src="https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=1200,height=900,fit=cover/article/main-picture/5f1ab523804ef449086633.jpg" class="h-[280px] rounded-md">
-            <div class="w-[55px] justify-center items-center rounded-md p-1 bg-[#283a61] text-white">
-                <span>travel</span>
-            </div>
-            <strong class="fond-bold text-lg">La foto del michi la saque de internet porque no me dejo ponerle la mia :,v </strong>
-            <div class="flex flex-col text-md text-gray-600">
-                <p>Los naranjosos se ven lindos pero son peligrosos</p>
-            </div>
-        </article>
-        <article class="flex flex-col gap-2">
-            <img src="https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=1200,height=900,fit=cover/article/main-picture/5f1ab523804ef449086633.jpg" class="h-[280px] rounded-md">
-            <div class="w-[55px] justify-center items-center rounded-md p-1 bg-[#283a61] text-white">
-                <span>travel</span>
-            </div>
-            <strong class="fond-bold text-lg">La foto del michi la saque de internet porque no me dejo ponerle la mia :,v </strong>
-            <div class="flex flex-col text-md text-gray-600">
-                <p>Los naranjosos se ven lindos pero son peligrosos</p>
-            </div>
-           
-        </article>
-    </section>
-</div>
-<section class="w-6xl min-h-screen flex justify-center items-center p-3">
-
-
 </section>
+
 
 {% endblock content %}
