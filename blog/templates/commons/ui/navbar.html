@@ -1,37 +1,103 @@
-<nav class="w-full bg-pink-700 text-white shadow-md">
+{% load static %}
+
+<nav class="w-full bg-pink-700 text-white shadow-md sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center justify-between h-20">
 
-            <!-- LOGO / Título -->
-            <a href="{% url 'home' %}" class="text-3xl font-bold tracking-wide hover:text-pink-200 transition">
-                Adoptar con AM♥R
-            </a>
+            <!-- LOGO + Título -->
+            <div class="flex items-center space-x-3">
+                <img src="{% static 'img/logo-blog.png' %}"
+                     alt="logo"
+                     class="w-20 h-20 object-cover">
 
-            <!-- Menú -->
+                <a href="{% url 'home' %}"
+                   class="text-3xl font-bold tracking-wider hover:text-pink-200 transition">
+                    Adoptar con AM♥R
+                </a>
+            </div>
+
+            <!-- Menú centro -->
             <ul class="hidden md:flex items-center gap-8 text-lg font-medium">
-
-                <li><a href="{% url 'post:post-list' %}" class="hover:text-gray-200 transition">Información</a></li>
-
-                <li><a href="{% url 'post:adopciones' %}" class="hover:text-gray-200 transition">En adopción</a></li>
-
-                <li><a href="{% url 'post:consejos' %}" class="hover:text-gray-200 transition">Consejos</a></li>
-
-                <li><a href="{% url 'post:contacto' %}" class="hover:text-gray-200 transition">Contacto</a></li>
-
-                <!-- Botones derecha -->
-                <li>
-                    <a href="{% url 'usuario:registro' %}" class="bg-white text-red-700 px-4 py-1 rounded-full hover:bg-gray-200 transition">
-                        Registrarse
-                    </a>
-                </li>
-                <!-- Botones Izquierda -->
-                <li>
-                    <a href="{% url 'usuario:login' %}" class="bg-red-600 px-4 py-1 rounded-full hover:bg-red-950 transition">
-                        Ingresar
-                    </a>
-                </li>
+                <li><a href="{% url 'post:post-list' %}" class="hover:text-gray-200">Información</a></li>
+                <li><a href="{% url 'post:adopciones' %}" class="hover:text-gray-200">En adopción</a></li>
+                <li><a href="{% url 'post:consejos' %}" class="hover:text-gray-200">Consejos</a></li>
+                <li><a href="{% url 'post:contacto' %}" class="hover:text-gray-200">Contacto</a></li>
             </ul>
+
+            <!-- Derecha -->
+            <div class="relative">
+
+                {% if user.is_authenticated %}
+
+                <!-- Avatar + menú dropdown -->
+                <button id="userMenuBtn"
+                        class="flex items-center gap-2 focus:outline-none group">
+                    <img src="{{ user.avatar.url }}"
+                         alt="avatar"
+                         class="w-10 h-10 rounded-full object-cover border-2 border-white group-hover:brightness-90 transition">
+                </button>
+
+                <!-- Dropdown -->
+                <div id="userMenu"
+                     class="hidden absolute right-0 mt-3 w-48 bg-white text-gray-800 rounded-xl shadow-lg py-2">
+
+                    {% if user.is_collaborator %}
+                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">
+                        Publicar
+                    </a>
+                    {% endif %}
+
+                    <form action="{% url 'usuario:auth-logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit"
+                                class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                            Cerrar sesión
+                        </button>
+                    </form>
+                </div>
+
+                {% else %}
+
+                <!-- Cuando NO está logueado -->
+                <ul class="flex items-center gap-4 text-lg font-medium">
+                    <li>
+                        <a href="{% url 'usuario:auth-login' %}"
+                           class="hover:text-gray-200 transition">
+                            Iniciar Sesión
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'usuario:auth-register' %}"
+                           class="bg-white text-pink-700 px-4 py-2 rounded-lg font-semibold hover:bg-pink-100 transition shadow">
+                            Registrarse
+                        </a>
+                    </li>
+                </ul>
+
+                {% endif %}
+
+            </div>
 
         </div>
     </div>
 </nav>
+
+<!-- SCRIPT DROPDOWN -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("userMenuBtn");
+        const menu = document.getElementById("userMenu");
+
+        if (btn) {
+            btn.addEventListener("click", () => {
+                menu.classList.toggle("hidden");
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                    menu.classList.add("hidden");
+                }
+            });
+        }
+    });
+</script>

@@ -1,7 +1,17 @@
 asgiref==3.10.0
+certifi==2025.11.12
+distlib==0.4.0
 Django==5.2.8
-mysqlclient==2.2.7
+django-widget-tweaks==1.5.0
+filelock==3.20.0
+packaging==25.0
 pillow==12.0.0
+pipenv==2025.0.4
+platformdirs==4.5.0
+playsound==1.2.2
+pyfiglet==1.0.4
 python-dotenv==1.2.1
 sqlparse==0.5.3
+tamagochi-matrix @ file:///C:/Users/xanim/Downloads/tamagochi_matrix-1.0.0-py3-none-any.whl#sha256=8a347011a7daae54299e00e5e571e7c8c935113920c318ecde31fab867f979b3
 tzdata==2025.2
+virtualenv==20.35.4

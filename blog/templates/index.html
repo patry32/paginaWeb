@@ -1,42 +1,52 @@
-
 {% extends 'layouts/general-layouts.html' %}
-    {% load static %}
-    {% block title %} Inicio {% endblock title %}
+{% load static %}
+{% block title %} Inicio {% endblock title %}
+
+{% block navbar %}
+    {% include 'components/navbar.html' %}
+{% endblock navbar %}
 
 {% block content %} 
 
-<!-- HERO / PRESENTACIÓN -->
-<section class="hero text-center py-20 bg-gray-100">
-    <div class="hero-content max-w-3xl mx-auto flex flex-col items-center gap-6">
+    <!-- HERO / PRESENTACIÓN -->
+    <section class="bg-gradient-to-b from-pink-50 to-purple-100 w-full min-h-screen py-20 px-6 flex flex-col flex-grow">
+        <div class="max-w-3xl mx-auto text-center flex flex-col items-center gap-8">
+            
+            <!-- TÍTULO -->
+            <h2 class="text-5xl font-extrabold text-pink-700 leading-tight">
+                ¡Encontrá a tu nuevo mejor amigo! 🐾💞
+            </h2>
 
-        <!-- TÍTULO -->
-        <h2 class="text-4xl font-bold text-pink-700">
-            Encontrá a tu nuevo mejor amigo 💌
-        </h2>
+            <!-- SUBTÍTULO -->
+            <p class="text-lg md:text-xl font-medium text-gray-700 max-w-2xl">
+                Adoptá, no compres. Miles de mascotas esperan por una familia llena de amor como la tuya 💗.
+            </p>
 
-        <!-- SUBTÍTULO -->
-        <p class="text-lg font-bold text-teal-700 max-w-xl">
-            Adoptá, no compres. Miles de mascotas esperan por una familia.
-        </p>
+            <!-- BUSCADOR -->
+            <div class="w-full flex justify-center">
+                <div class="flex items-center gap-2 w-[300px] md:w-[450px] bg-white border border-gray-300 rounded-full px-4 py-2 shadow-md">
+                    <input 
+                        type="text" 
+                        class="flex-1 focus:outline-none text-gray-700"
+                        placeholder="Buscar mascota..."
+                    >
+                    <button class="text-pink-600 font-bold hover:text-pink-800 transition">
+                        🔍
+                    </button>
+                </div>
+            </div>
 
-        <!-- BUSCADOR -->
-        <div class="w-full flex justify-center mt-4">
-            <div class="w-[300px] md:w-[400px] p-2 border border-gray-300 rounded-md flex shadow-sm bg-white">
-                <input 
-                    type="text" 
-                    class="w-full h-full focus:outline-none"
-                    placeholder="Buscar mascota..."
-                >
+            <!-- BOTONES -->
+            <div class="flex justify-center gap-5 mt-4">
+                <a href="{% url 'post:adopciones' %}" 
+                class="bg-pink-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-pink-700 transition shadow-lg">
+                    Ver mascotas
+                </a>
+                <a href="{% url 'post:consejos' %}" 
+                class="bg-white border border-pink-600 text-pink-700 font-semibold px-6 py-3 rounded-full hover:bg-pink-50 transition shadow-md">
+                    Consejos de cuidado
+                </a>
             </div>
         </div>
-
-        <!-- BOTONES -->
-        <div class="hero-buttons mt-4 flex justify-center gap-4">
-            <a href="{% url 'usuario:user-profile' %}" class="btn font-bold hover:text-gray-200 transition">Ver mascotas</a>
-            <a href="{% url 'post:consejos' %}" class="btn-secundario font-bold hover:text-gray-200 transition">Consejos de cuidado</a>
-        </div>
-    </div>
-</section>
-
-
+    </section>
 {% endblock content %}

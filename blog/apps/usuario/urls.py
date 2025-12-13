@@ -1,18 +1,20 @@
-from django.urls import path, include
-import apps.usuario.views as Views
-from django.shortcuts import render
+from django.urls import path
 from . import views
-from .views import UserProfileView
 
 app_name = "usuario"
 
 urlpatterns = [
-    path('profile/', UserProfileView.as_view(), name='user-profile'),
-    path('registro/', views.registro_view, name='registro'),
-    path('login/', views.login_view, name='login'),
+    path('profile/', views.UserProfileView.as_view(), name='user-profile'),
+    # Registro / login
+    path('auth/login/', views.LoginView.as_view(), name="auth-login"),
+    path('auth/register/', views.RegisterView.as_view(), name="auth-register"),
+    path('auth/logout/', views.LogoutView.as_view(), name="auth-logout"),
+
+
+    # Tus vistas extra
     path('gatos/', views.gatos_view, name='gatos'),
     path('aves/', views.aves_view, name='aves'),
     path('cachorros/', views.cachorros_view, name='cachorros'),
     path('adultos/', views.adultos_view, name='adultos'),
-    path('urgente/', views.adultos_view, name='urgente'),
+    path('urgente/', views.urgente_view, name='urgente'),
 ]
