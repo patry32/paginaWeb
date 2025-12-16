@@ -6,7 +6,7 @@ from django.urls import reverse, reverse_lazy
 from django.conf import settings
 
 class PostCreateView(CreateView):
-    template_name = 'post/post-list.html'
+    template_name = 'post/post-create.html'
     form_class = PostCreateForm
     model = Post
 
@@ -22,9 +22,10 @@ class PostCreateView(CreateView):
             for image in images:
                 PostImage.objects.create(post=post, image=image)
         else:
-            PostImage.objects.create(post=post, image=settings.POST_DEFAULT_IMAGE)
+            PostImage.objects.create(
+                post=post, image=settings.POST_DEFAULT_IMAGE)
         return super().form_valid(form)
-    
+
 
 class PostListView(TemplateView):
     template_name = 'post/post-list.html'
@@ -32,10 +33,6 @@ class PostListView(TemplateView):
 
 class PostDetailView():
     template_name = 'post/post-detail.html'
-    pass
-
-class PostCreateView(CreateView):
-    template_name = 'post/post-create.html'
     pass
 
 class PostUpdateView():

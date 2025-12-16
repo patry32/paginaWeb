@@ -3,18 +3,16 @@
 
 {% block title_layout %}
 
-    L
+    L {% block title %} BLOG{% endblock title %} 
 
-{% block title %} Iniciar sesión {% endblock title %} 
+    {% endblock title_layout %}
 
-{% endblock title_layout %}
+    {% block content_layout %}
+    
+    {% include 'commons\header.html' %}
+ 
+            {% block content %} Carga un Contenido {% endblock content %}
 
-{% block content_layout %}
-
-{% include 'commons\header.html' %}
-
-{% block content %} Carga un Contenido {% endblock content %}
-
-{% include 'commons\footer.html' %}
+    {% include 'commons\footer.html' %}
 
 {% endblock content_layout %}
