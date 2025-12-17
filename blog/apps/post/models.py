@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
+from django.urls import reverse
 import uuid
 import os
 
@@ -17,6 +18,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, max_length=150, blank=True)
     content = models.TextField(max_length=10000)
+    image = models.ImageField(upload_to='post/', blank=True, null=True)
     allow_comments = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)
     update_at = models.DateTimeField(auto_now=True)
@@ -48,7 +50,10 @@ class Post(models.Model):
 
         super().save(*args, **kwargs)
 
-class comment(models.Model):
+    def get_absolute_url(self):
+        return reverse('post:post-detail', kwargs={'slug': self.slug})
+
+class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     content = models.TextField(max_length=200)
     created_at = models.DateTimeField(default=timezone.now)
@@ -66,8 +71,8 @@ def get_image_filename(instance, filename):
     images_count = instance.post.images.count()
 
     _, file_extension = os.path.splitext(filename)
-
     new_filename = f"post-{post_id}-image-{images_count + 1}{file_extension}"
+
     return os.path.join("post/cover/", new_filename)
 
 class PostImage(models.Model):
@@ -83,3 +88,5 @@ class PostImage(models.Model):
      
     def __str__(self):
         return f"{self.id}"
+    
+   

@@ -1,9 +1,13 @@
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, DeleteView, DetailView, UpdateView
 from django.shortcuts import render
 from apps.post.forms import PostCreateForm
-from apps.post.models import Post, PostImage
+from apps.post.models import Comment, Post, PostImage
 from django.urls import reverse, reverse_lazy
 from django.conf import settings
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from .models import Comment
+from .forms import CommentForm
 
 class PostCreateView(CreateView):
     template_name = 'post/post-create.html'
@@ -31,29 +35,70 @@ class PostListView(TemplateView):
     template_name = 'post/post-list.html'
     pass
 
-class PostDetailView():
+class PostDetailView(DetailView):
+    model = Post
     template_name = 'post/post-detail.html'
-    pass
+    context_object_name = 'post'
 
-class PostUpdateView():
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comment_form'] = CommentForm()
+        return context
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Post
     template_name = 'post/post-update.html'
-    pass
+    fields = ['title', 'content', 'image']
 
-class PostDeleteView():
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
+
+    def get_success_url(self):
+        return reverse('post:post-detail', kwargs={'slug': self.object.slug})
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
     template_name = 'post/post-delete.html'
-    pass
+    success_url = reverse_lazy('home')
 
-class CommentCreateView():
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
+
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
     template_name = 'post/post-comment.html'
-    pass
+    fields = ['content'] 
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.post = get_object_or_404(Post, slug=self.kwargs['slug'])
+        return super().form_valid(form)
 
-class CommentUpdateView():
-    template_name = 'post/post-update.html'
-    pass
+    def get_success_url(self):
+        return reverse_lazy('post:post-detail', kwargs={'pk': self.kwargs['post_id']})
 
-class CommentDeleteView():
-    template_name = 'post/post-update.html'
-    pass
+class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Comment
+    fields = ['content']
+    template_name = 'post/post-comment.html'
+
+    def test_func(self):
+        return self.get_object().author == self.request.user
+
+    def get_success_url(self):
+        return reverse('post-detail', kwargs={'slug': self.object.post.slug})
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
+    template_name = 'post/post-comment-delete.html'
+
+    def test_func(self):
+        return self.get_object().author == self.request.user
+
+    def get_success_url(self):
+        return reverse('post-detail', kwargs={'slug': self.object.post.slug})
 
 def consejos_view(request):
     return render(request, 'post/consejos.html')

@@ -52,7 +52,7 @@ class RegisterView(CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
 
-        registered_group = Group.objects.get(name="registered")
+        registered_group, _ = Group.objects.get_or_create(name="registered")
         self.object.groups.add(registered_group)
 
         return response

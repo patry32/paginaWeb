@@ -1,5 +1,5 @@
 from django import forms
-from apps.post.models import Post, PostImage
+from apps.post.models import Post, PostImage, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -22,7 +22,6 @@ class PostForm(forms.ModelForm):
             }),
         }
 
-
 class PostCreateForm(PostForm):
     image = forms.ImageField(
         required=False,
@@ -43,6 +42,23 @@ class PostCreateForm(PostForm):
 
         return post
 
-
 class PostUpdateForm(PostForm):
     pass
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={
+                'rows': 3,
+                'placeholder': 'Agrega un comentario...',
+                'class': 'w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500'
+            })
+        }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
